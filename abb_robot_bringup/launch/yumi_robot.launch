@@ -48,7 +48,9 @@
 
       <!-- Two 'ros_control' controller spawners (stopped for the controller that command motions) -->
       <node pkg="controller_manager" type="spawner" name="started" args="egm_state_controller joint_state_controller"/>
-      <node pkg="controller_manager" type="spawner" name="stopped" args="--stopped joint_group_velocity_controller"/>
+      <!-- joint_group_velocity_controller  -->
+      <node pkg="controller_manager" type="spawner" name="stopped" args="--stopped joint_group_velocity_controller joint_group_position_controller"/> 
+
     </group>
   </group>
 </launch>
