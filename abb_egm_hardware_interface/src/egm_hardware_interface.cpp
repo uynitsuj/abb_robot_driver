@@ -661,7 +661,7 @@ void EGMHardwareInterface::initializeROSControlLayer(ros::NodeHandle& nh)
         if(!limits.has_velocity_limits)
         {
           limits.has_velocity_limits = true;
-          limits.max_velocity = (joint.rotational ? 10.0*Constants::DEG_TO_RAD : 0.1);
+          limits.max_velocity = (joint.rotational ? 10000.0*Constants::DEG_TO_RAD : 0.1);
           ROS_WARN_STREAM_NAMED(ROS_LOG_INIT,
                                 "Configured default velocity limit for '" << joint.name <<
                                 "': " << limits.max_velocity << (joint.rotational ? " rad/s" : " m/s"));
@@ -690,7 +690,7 @@ void EGMHardwareInterface::initializeROSControlLayer(ros::NodeHandle& nh)
         {
           soft_limits.min_position = 0.99*joint.lower_limit;
           soft_limits.max_position = 0.99*joint.upper_limit;
-          soft_limits.k_position = 1.0;
+          soft_limits.k_position = 10000.0;
           ROS_WARN_STREAM_NAMED(ROS_LOG_INIT,
                                 "Configured default soft limits for '" << joint.name <<
                                 "': position [" << soft_limits.min_position << "; "
